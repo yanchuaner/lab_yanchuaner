@@ -13,6 +13,7 @@ pnpm typecheck
 pnpm lint
 pnpm audit:ui
 pnpm audit:content
+pnpm audit:links
 pnpm build
 ```
 

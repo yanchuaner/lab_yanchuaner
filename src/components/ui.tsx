@@ -5,7 +5,8 @@ export function Button({ className = "", ...props }: ButtonHTMLAttributes<HTMLBu
   return <button className={`button ${className}`} {...props} />;
 }
 
-export function ButtonLink({ href, children, variant = "primary" }: { href: string; children: ReactNode; variant?: "primary" | "secondary" }) {
+export function ButtonLink({ href, children, variant = "primary", external = false }: { href: string; children: ReactNode; variant?: "primary" | "secondary"; external?: boolean }) {
+  if (external) return <a href={href} className={`button button-${variant}`} target="_blank" rel="noreferrer">{children}</a>;
   return <Link href={href} className={`button button-${variant}`}>{children}</Link>;
 }
 

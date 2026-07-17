@@ -1,2 +1,6 @@
-import { CatalogPage } from "@/components/CatalogPage";
-export default function Page() { return <CatalogPage mode="paths" />; }
+import { PathsPage } from "@/components/PathsPage";
+import { getGuideSummaries } from "@/lib/content-server";
+
+export default async function Page() {
+  return <PathsPage guides={await getGuideSummaries()} />;
+}

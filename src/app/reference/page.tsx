@@ -1,2 +1,2 @@
-import { CatalogPage } from "@/components/CatalogPage";
-export default function Page() { return <CatalogPage mode="reference" />; }
+import { ReferencePage } from "@/components/ReferencePage";
+export default function Page() { return <ReferencePage />; }
