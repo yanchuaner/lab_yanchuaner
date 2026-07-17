@@ -49,6 +49,17 @@ export const messages = {
     mainSite: "返回数字母港",
     empty: "没有找到匹配内容",
     skip: "跳到主要内容"
+    ,projectOverviewCopy: "项目以真实需求为起点，以公开协作为方法。每个任务都应有清晰背景、可验证结果和适合新贡献者的说明，让第一次参与也不会无从下手。"
+    ,roadmapScope: "梳理需求与贡献边界"
+    ,roadmapCore: "完成核心体验与文档"
+    ,roadmapTrial: "邀请真实用户试用"
+    ,roadmapReview: "公开复盘并持续迭代"
+    ,complete: "已完成"
+    ,nextPhase: "下一阶段"
+    ,guideOutcomeBuild: "完成一份可以运行或提交的作品"
+    ,guideOutcomeReason: "理解每一步背后的工程理由"
+    ,guideOutcomeVerify: "知道遇到问题时去哪里查证"
+    ,guidePrerequisiteCopy: "不要求已有项目经验。准备一台电脑，并留出一段不被打断的时间。"
   },
   en: {
     brand: "Yanzhong Innovation Lab",
@@ -97,6 +108,17 @@ export const messages = {
     mainSite: "Back to Digital Harbor",
     empty: "No matching content",
     skip: "Skip to main content"
+    ,projectOverviewCopy: "This project starts from real needs and uses open collaboration as its method. Every task should have context, a verifiable outcome, and guidance that welcomes first-time contributors."
+    ,roadmapScope: "Define needs and contribution scope"
+    ,roadmapCore: "Ship the core experience and docs"
+    ,roadmapTrial: "Invite real users to test"
+    ,roadmapReview: "Share findings and keep iterating"
+    ,complete: "Complete"
+    ,nextPhase: "Next phase"
+    ,guideOutcomeBuild: "Finish something you can run or submit"
+    ,guideOutcomeReason: "Understand the engineering reason behind each step"
+    ,guideOutcomeVerify: "Know where to verify answers when blocked"
+    ,guidePrerequisiteCopy: "No prior project experience required. Bring a computer and set aside one focused session."
   }
 } as const;
 
