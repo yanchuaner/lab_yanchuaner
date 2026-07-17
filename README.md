@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-访问 `http://localhost:3000`。教程正文位于 `content/{zh,en}/guides`，由服务端编译 MDX；中英文文件名和关键 frontmatter 必须一一对应。
+访问 `http://localhost:3000`。教程正文位于 `content/{zh,en}/guides`，由服务端编译 MDX。中文是发布必需项，英文可按 `missing / draft / reviewed` 状态渐进补齐；缺少英文时自动回退中文原文。
 
 ## 项目标准
 

@@ -60,6 +60,10 @@ export const messages = {
     ,guideOutcomeReason: "理解每一步背后的工程理由"
     ,guideOutcomeVerify: "知道遇到问题时去哪里查证"
     ,guidePrerequisiteCopy: "不要求已有项目经验。准备一台电脑，并留出一段不被打断的时间。"
+    ,chineseOnlyTitle: "本教程暂仅提供中文"
+    ,chineseOnlyCopy: "界面仍保持英文；正文展示经过审核的中文原文，欢迎参与翻译。"
+    ,chineseOnlyBadge: "中文内容"
+    ,translationDraft: "英文草稿"
   },
   en: {
     brand: "Yanzhong Innovation Lab",
@@ -119,6 +123,10 @@ export const messages = {
     ,guideOutcomeReason: "Understand the engineering reason behind each step"
     ,guideOutcomeVerify: "Know where to verify answers when blocked"
     ,guidePrerequisiteCopy: "No prior project experience required. Bring a computer and set aside one focused session."
+    ,chineseOnlyTitle: "This guide is currently available in Chinese"
+    ,chineseOnlyCopy: "The interface remains in English while the reviewed Chinese source is shown. Translation contributions are welcome."
+    ,chineseOnlyBadge: "Chinese content"
+    ,translationDraft: "English draft"
   }
 } as const;
 

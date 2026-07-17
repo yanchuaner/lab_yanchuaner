@@ -2,6 +2,7 @@ import type { Localized } from "./i18n";
 
 export type CategoryId = "foundation" | "miniapp" | "app" | "agent" | "hardware" | "open";
 export type Difficulty = "Beginner" | "Intermediate";
+export type TranslationStatus = "missing" | "draft" | "reviewed";
 
 export interface Category {
   id: CategoryId;
@@ -20,6 +21,7 @@ export interface Guide {
   minutes: number;
   lessons: number;
   accent: string;
+  translationStatus: TranslationStatus;
 }
 
 export interface Project {
