@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-访问 `http://localhost:3000`。当前 Demo 使用本地结构化数据，后续可平滑迁移至 MDX 内容仓库。
+访问 `http://localhost:3000`。教程正文位于 `content/{zh,en}/guides`，由服务端编译 MDX；中英文文件名和关键 frontmatter 必须一一对应。
 
 ## 项目标准
 

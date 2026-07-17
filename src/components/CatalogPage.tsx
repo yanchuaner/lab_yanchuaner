@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
-import { categories, guides, projects } from "@/lib/content";
+import { categories, projects, type Guide } from "@/lib/content";
 import { useApp } from "./AppProvider";
 import { Badge } from "./ui";
 
-export function CatalogPage({ mode }: { mode: "paths" | "guides" | "projects" | "reference" }) {
+export function CatalogPage({ mode, guideItems = [] }: { mode: "paths" | "guides" | "projects" | "reference"; guideItems?: Guide[] }) {
   const { locale, t } = useApp();
   const [query, setQuery] = useState("");
   const title = t(mode);
-  const items = mode === "projects" ? projects : mode === "guides" ? guides : categories;
+  const items = mode === "projects" ? projects : mode === "guides" ? guideItems : categories;
   const filtered = items.filter((item) => {
     const detail = "description" in item ? item.description.zh : item.summary.zh;
     return `${item.title.zh} ${item.title.en} ${detail}`.toLowerCase().includes(query.toLowerCase());

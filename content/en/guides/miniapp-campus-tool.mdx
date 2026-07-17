@@ -1,0 +1,101 @@
+---
+id: miniapp-campus-tool
+title: Build a Campus Mini Program
+summary: Build a timetable and event reminder prototype with a clear data flow.
+category: miniapp
+difficulty: Beginner
+minutes: 70
+lessons: 9
+order: 2
+accent: green
+---
+
+## Before you start
+
+You will build a campus event list that runs in WeChat DevTools. Users can browse events, filter by date, and follow an event. The first version uses local sample data and collects no names, classes, or contact details.
+
+Prepare WeChat DevTools. If you do not have a production AppID, use the testing option offered by the tool. Labels may change between versions, so verify them against official documentation.
+
+## 1. Define the smallest useful scope
+
+Keep only three actions: browse events, change the date, and follow or unfollow an event. Login, chat, notifications, and admin publishing are outside this exercise.
+
+One event looks like this:
+
+```js
+{
+  id: "club-open-day",
+  title: "Club Open Day",
+  date: "2026-07-20",
+  place: "Main Building, Level 1",
+  followed: false
+}
+```
+
+Use a stable string `id`, not an array position, to identify an event.
+
+## 2. Establish page state
+
+Store the event array and selected date in page `data`. Compute filtered results instead of storing a second copy that can drift out of sync.
+
+```js
+Page({
+  data: { selectedDate: "2026-07-20", events: [] },
+  onLoad() { this.setData({ events: demoEvents }) }
+})
+```
+
+Success means sample events render consistently after launch and the console has no script errors.
+
+## 3. Render a scannable event list
+
+Each row should prioritize title, date, and place. The follow control needs a text label; color or an icon alone is not enough.
+
+Use the event `id` as the list key. A date with no events should show a clear empty state instead of a blank screen.
+
+## 4. Filter by date
+
+When the date changes, update only `selectedDate` and derive matching events from the original array. Test dates with zero, one, and multiple events.
+
+Filtering should be a read-only operation. Do not mutate the source array during render.
+
+## 5. Update follow state
+
+Read the event `id` from the interaction and return a new array with `map`:
+
+```js
+const events = this.data.events.map(event =>
+  event.id === id ? { ...event, followed: !event.followed } : event
+)
+this.setData({ events })
+```
+
+Only the selected event should change, and its state should remain consistent after switching dates.
+
+## 6. Add local persistence
+
+The prototype may save followed IDs in local storage, but local storage is not a cross-device account system. If saved data is invalid, recover with an empty list instead of crashing.
+
+## 7. Check the mobile experience
+
+- Primary touch targets are large enough
+- Long event titles wrap without overlap
+- The date filter remains easy to find while scrolling
+- Text remains readable with a dark system preference
+- Loading, empty, and failure states are explicit
+
+## 8. Respect the data boundary
+
+Use only public event information and sample data. Never commit real student information, private group messages, or unpublished schedules. A future API should return only fields needed by this page.
+
+## 9. Completion check
+
+- [ ] Date filters show the correct events
+- [ ] Follow changes only the selected event
+- [ ] Empty dates have a useful message
+- [ ] Local follows recover after restarting
+- [ ] The repository contains no AppSecret, personal data, or real roster
+
+## Next step
+
+Move data access into a separate module and add a small unit test for the filter function. Design login, cloud sync, or notifications only after real users confirm that the core flow is useful.

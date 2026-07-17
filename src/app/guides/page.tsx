@@ -1,2 +1,3 @@
 import { CatalogPage } from "@/components/CatalogPage";
-export default function Page() { return <CatalogPage mode="guides" />; }
+import { getGuideSummaries } from "@/lib/content-server";
+export default async function Page() { return <CatalogPage mode="guides" guideItems={await getGuideSummaries()} />; }

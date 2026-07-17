@@ -1,0 +1,88 @@
+---
+id: git-first-contribution
+title: 第一次开源贡献
+summary: 从 Fork 到 Pull Request，完成一次真实而规范的协作。
+category: foundation
+difficulty: Beginner
+minutes: 35
+lessons: 6
+order: 1
+accent: cyan
+---
+
+## 开始之前
+
+这次练习的目标不是“学会所有 Git 命令”，而是完成一条可重复的协作链路：复制仓库、建立分支、提交一处小改动，并发起 Pull Request。
+
+你需要安装 [Git](https://git-scm.com/downloads)，准备一个 GitHub 账号，并找到一个允许练习的仓库。不要在不熟悉的项目中随意提交；优先选择标有 `good first issue` 的任务，或使用自己的练习仓库。
+
+## 1. Fork 并克隆仓库
+
+在 GitHub 仓库页面点击 **Fork**，得到属于自己的远端副本。随后在终端运行：
+
+```bash
+git clone https://github.com/YOUR_NAME/REPOSITORY.git
+cd REPOSITORY
+git remote -v
+```
+
+把示例中的用户名和仓库名替换为真实值。`git remote -v` 应显示你自己的仓库地址；这就是本地提交将要推送的目标。
+
+## 2. 建立任务分支
+
+不要直接在 `main` 上工作。为这次改动建立一个能够说明目的的分支：
+
+```bash
+git switch -c docs/improve-getting-started
+git status
+```
+
+成功信号是当前分支显示为 `docs/improve-getting-started`，工作区没有意外修改。
+
+## 3. 完成一处小而完整的改动
+
+第一次贡献适合修正文档、补充示例或解决边界清晰的小问题。编辑后先查看范围：
+
+```bash
+git diff
+```
+
+逐行确认改动都属于当前任务。不要顺手格式化整个文件，也不要提交编辑器缓存、密钥或个人数据。
+
+## 4. 验证并提交
+
+先运行仓库要求的检查；具体命令通常写在 `README.md` 或 `CONTRIBUTING.md`。确认通过后：
+
+```bash
+git add path/to/changed-file
+git diff --cached
+git commit -m "docs: clarify getting started steps"
+```
+
+使用明确文件路径比 `git add .` 更容易控制提交范围。提交信息说明“改变了什么”，不要写成“update”或“fix stuff”。
+
+## 5. 推送并发起 Pull Request
+
+```bash
+git push -u origin docs/improve-getting-started
+```
+
+回到 GitHub 创建 Pull Request。描述应回答三个问题：改了什么、为什么需要、如何验证。维护者提出修改意见时，在同一分支继续提交即可，Pull Request 会自动更新。
+
+## 6. 完成检查
+
+- [ ] 改动位于独立分支，而不是 `main`
+- [ ] `git diff --cached` 中没有无关文件或敏感信息
+- [ ] 仓库要求的检查已经通过
+- [ ] Pull Request 描述包含原因和验证方式
+- [ ] 能根据 review 意见继续更新同一分支
+
+## 常见问题
+
+**推送时提示没有权限**：确认 `origin` 指向你的 Fork，而不是原项目。运行 `git remote -v` 检查。
+
+**提交了不该提交的文件**：如果尚未推送，可用 `git restore --staged FILE` 取消暂存；不要使用会丢失工作区内容的破坏性命令。
+
+## 下一步
+
+阅读目标仓库的贡献指南，选择一个边界清晰的真实任务。第一次贡献的价值不在改动大小，而在于让协作过程可复核、可讨论、可继续。

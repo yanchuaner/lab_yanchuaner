@@ -1,0 +1,88 @@
+---
+id: git-first-contribution
+title: Your First Open-source Contribution
+summary: Go from fork to pull request in one complete, practical workflow.
+category: foundation
+difficulty: Beginner
+minutes: 35
+lessons: 6
+order: 1
+accent: cyan
+---
+
+## Before you start
+
+The goal is not to memorize every Git command. You will complete one repeatable collaboration flow: copy a repository, create a branch, make a focused change, and open a Pull Request.
+
+Install [Git](https://git-scm.com/downloads), prepare a GitHub account, and choose a repository that welcomes practice. Do not send experimental changes to an unfamiliar project. Prefer a `good first issue` or your own practice repository.
+
+## 1. Fork and clone
+
+Select **Fork** on GitHub to create your remote copy, then run:
+
+```bash
+git clone https://github.com/YOUR_NAME/REPOSITORY.git
+cd REPOSITORY
+git remote -v
+```
+
+Replace the placeholders with real values. `git remote -v` should point to your fork, which is where you will push the branch.
+
+## 2. Create a task branch
+
+Do not work directly on `main`. Create a branch whose name explains its purpose:
+
+```bash
+git switch -c docs/improve-getting-started
+git status
+```
+
+You should now see `docs/improve-getting-started` as the active branch and no unexpected changes.
+
+## 3. Make one focused change
+
+Documentation corrections, examples, and small well-defined issues make good first contributions. After editing, inspect the exact scope:
+
+```bash
+git diff
+```
+
+Every changed line should belong to the task. Avoid formatting an entire file, and never commit editor caches, secrets, or personal data.
+
+## 4. Verify and commit
+
+Run the checks required by the repository. They are usually documented in `README.md` or `CONTRIBUTING.md`. Then commit only the intended file:
+
+```bash
+git add path/to/changed-file
+git diff --cached
+git commit -m "docs: clarify getting started steps"
+```
+
+Explicit paths give you more control than `git add .`. The commit message should state what changed, not simply say “update” or “fix stuff.”
+
+## 5. Push and open a Pull Request
+
+```bash
+git push -u origin docs/improve-getting-started
+```
+
+Open a Pull Request on GitHub. Explain what changed, why it matters, and how you verified it. If a maintainer requests changes, keep committing to the same branch; the Pull Request updates automatically.
+
+## 6. Completion check
+
+- [ ] The change is on a task branch, not `main`
+- [ ] The staged diff contains no unrelated files or sensitive data
+- [ ] All repository checks pass
+- [ ] The Pull Request explains the reason and verification
+- [ ] You can update the same branch after review
+
+## Common problems
+
+**Push is denied**: run `git remote -v` and confirm that `origin` points to your fork rather than the upstream project.
+
+**An unwanted file is staged**: before pushing, use `git restore --staged FILE`. Avoid destructive commands that could discard your working copy.
+
+## Next step
+
+Read the target repository's contribution guide and choose one real, bounded task. The value of a first contribution is not its size, but a change that others can review, discuss, and build upon.

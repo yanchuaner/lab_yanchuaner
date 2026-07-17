@@ -1,2 +1,3 @@
 import { LabHome } from "@/components/LabHome";
-export default function Home() { return <LabHome />; }
+import { getGuideSummaries } from "@/lib/content-server";
+export default async function Home() { return <LabHome guides={await getGuideSummaries()} />; }

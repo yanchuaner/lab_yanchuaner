@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { ArrowRight, Blocks, Cpu, Smartphone, Sparkles, Terminal, Users } from "lucide-react";
-import { categories, guides, projects, type CategoryId } from "@/lib/content";
+import { categories, projects, type Guide } from "@/lib/content";
 import { useApp } from "./AppProvider";
 import { Badge, ButtonLink, SectionHeading } from "./ui";
 
 const icons = { terminal: Terminal, blocks: Blocks, smartphone: Smartphone, sparkles: Sparkles, cpu: Cpu, users: Users };
 
-export function LabHome() {
+export function LabHome({ guides }: { guides: Guide[] }) {
   const { locale, t } = useApp();
   const difficulty = (value: string) => t(value === "Beginner" ? "difficultyBeginner" : "difficultyIntermediate");
   const status = (value: string) => t(value === "Active" ? "statusActive" : "statusPlanning");
