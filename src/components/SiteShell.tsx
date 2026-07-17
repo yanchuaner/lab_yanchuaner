@@ -18,17 +18,17 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <header className="site-header">
       <div className="header-inner">
         <Link href="/" className="brand" aria-label={t("brand")}><span className="brand-mark"><FlaskConical size={19} /></span><span>{t("brandShort")}</span></Link>
-        <nav className="desktop-nav" aria-label="Primary">{nav.map(([key, href]) => <Link key={key} href={href}>{t(key)}</Link>)}</nav>
+        <nav className="desktop-nav" aria-label={t("primaryNav")}>{nav.map(([key, href]) => <Link key={key} href={href}>{t(key)}</Link>)}</nav>
         <div className="header-actions">
-          <button className="icon-button search-button" aria-label={t("searchShort")}><Search size={18} /><span>{t("searchShort")}</span><kbd>⌘ K</kbd></button>
+          <Link href="/guides" className="icon-button search-button" aria-label={t("searchShort")}><Search size={18} /><span>{t("searchShort")}</span></Link>
           <button className="icon-button" onClick={toggleLocale} aria-label={t("language")}><Languages size={18} /></button>
           <button className="icon-button" onClick={toggleTheme} aria-label={t("theme")}>{theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}</button>
           <button className="icon-button mobile-menu" onClick={() => setOpen(!open)} aria-label={open ? t("close") : t("menu")}>{open ? <X size={20} /> : <Menu size={20} />}</button>
         </div>
       </div>
-      {open && <nav className="mobile-nav" aria-label="Mobile">{nav.map(([key, href]) => <Link key={key} href={href} onClick={() => setOpen(false)}>{t(key)}</Link>)}</nav>}
+      {open && <nav className="mobile-nav" aria-label={t("mobileNav")}>{nav.map(([key, href]) => <Link key={key} href={href} onClick={() => setOpen(false)}>{t(key)}</Link>)}</nav>}
     </header>
     <main id="main">{children}</main>
-    <footer><div><span>{t("footer")}</span><div><a href="https://yanchuaner.cn">{t("mainSite")}</a><a href="#" aria-label="GitHub"><Github size={18} /></a></div></div></footer>
+    <footer><div><span>{t("footer")}</span><div><a href="https://yanchuaner.cn">{t("mainSite")}</a><a href="https://github.com/yanchuaner/lab_yanchuaner" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a></div></div></footer>
   </>;
 }

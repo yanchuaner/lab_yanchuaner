@@ -1,0 +1,106 @@
+---
+id: terminal-project-basics
+title: 在终端里认识一个项目
+summary: 学会安全地查看目录、定位文件、运行脚本，并理解项目说明。
+category: foundation
+difficulty: Beginner
+minutes: 40
+lessons: 6
+order: 0
+accent: cyan
+translationStatus: missing
+---
+
+## 开始之前
+
+你将从终端进入一个项目目录，判断它使用什么技术、从哪里启动、有哪些检查命令，并在不修改任何文件的前提下完成一次项目体检。
+
+本教程同时给出 PowerShell 与常见 Unix Shell 命令。只运行你理解的命令；从网页复制命令前，先检查它是否包含删除、下载后执行或需要管理员权限的操作。
+
+## 1. 确认自己在哪里
+
+PowerShell：
+
+```powershell
+Get-Location
+Get-ChildItem -Force
+```
+
+macOS、Linux 或 Git Bash：
+
+```bash
+pwd
+ls -la
+```
+
+第一条命令显示当前目录，第二条列出普通文件和隐藏文件。运行项目命令前，先确认路径确实是你准备操作的仓库。
+
+## 2. 识别项目入口
+
+优先寻找这些文件：
+
+| 文件 | 通常说明什么 |
+| --- | --- |
+| `README.md` | 项目目标、安装与运行方式 |
+| `package.json` | Node.js 依赖和脚本 |
+| `pyproject.toml` | Python 项目与工具配置 |
+| `Cargo.toml` | Rust 包配置 |
+| `AGENTS.md` / `CONTRIBUTING.md` | 开发约定与贡献流程 |
+| `.env.example` | 需要配置的环境变量示例 |
+
+不要打开或提交真实 `.env`。它可能包含密钥、数据库地址或其他敏感配置。
+
+## 3. 阅读而不是猜测脚本
+
+在 Node.js 项目中，查看 `package.json` 的 `scripts` 字段。`dev`、`build`、`test` 和 `lint` 是常见名称，但每个仓库的实际命令可能不同。
+
+```powershell
+Get-Content package.json
+```
+
+不要因为“其他项目都这样”就直接运行命令。仓库自己的 README 和贡献指南优先级更高。
+
+## 4. 用搜索定位信息
+
+如果安装了 ripgrep，可以快速查找关键词：
+
+```bash
+rg "TODO|FIXME" src
+rg --files
+```
+
+第一条命令在 `src` 中查找待办标记，第二条列出未被忽略的文件。搜索比逐层打开目录更快，也更容易建立项目全貌。
+
+## 5. 查看 Git 状态
+
+```bash
+git status --short
+git branch --show-current
+git remote -v
+```
+
+依次确认工作区是否有修改、当前分支以及远端仓库。看到不属于自己的改动时，不要清理或覆盖；先确认它们来自哪里。
+
+## 6. 完成项目体检
+
+用五句话记录：
+
+1. 这个项目解决什么问题？
+2. 主要技术栈是什么？
+3. 开发命令是什么？
+4. 质量检查有哪些？
+5. 当前工作区和分支是否干净？
+
+如果 README 无法回答这些问题，这本身就是一个有价值、边界清晰的文档改进机会。
+
+## 完成检查
+
+- [ ] 能确认当前目录与 Git 分支
+- [ ] 能找到项目说明和贡献约定
+- [ ] 能解释准备运行的脚本，而不是盲目执行
+- [ ] 没有读取、输出或提交真实密钥
+- [ ] 能用简短文字概括项目的运行与检查方式
+
+## 下一步
+
+完成[第一次开源贡献](/guides/git-first-contribution)，把这次项目体检变成一次小而规范的改进。

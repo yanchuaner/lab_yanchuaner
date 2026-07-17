@@ -105,7 +105,7 @@
 
 - 界面固定文案只进入 `src/lib/i18n.ts`；内容标题与摘要使用 `{ zh, en }`。
 - 组件通过 `t(key)` 和 `item.title[locale]` 读取，不写 `locale === "zh"` 文案分支。
-- 中文缺失或英文缺失都视为内容未完成，不以机器翻译在运行时兜底。
+- 界面固定文案保持中英完整；教程以中文为发布必需项。英文缺失时明确标注并回退中文原文，不以机器翻译在运行时兜底。
 - `html.lang` 必须随语言同步；主题与语言偏好保存于本地。
 - 防闪烁脚本在 React 水合前应用暗色 class，根节点保留 `suppressHydrationWarning`。
 - 英文导航按最长标签测试；空间不足时切换手机菜单，不压缩到重叠。
@@ -127,6 +127,8 @@
 pnpm typecheck
 pnpm lint
 pnpm audit:ui
+pnpm audit:content
+pnpm audit:links
 pnpm build
 ```
 
